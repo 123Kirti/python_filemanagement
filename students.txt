@@ -1,0 +1,3 @@
+Kirti->kirti@gmail.com->123->Mathematics:96,Science:90
+Anvesha->anvesha@gmail.com->124->Mathematics:98,Science:92
+Anubhav->anubhav@gmail.com->123->Mathematics:95,Science:99
