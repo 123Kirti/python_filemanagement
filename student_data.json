@@ -1,9 +1,25 @@
-{'no': '1', 'name': 'kirti', 'course': 'btech'},
-{'no': '1', 'name': 'kirti', 'course': 'btech'},
-{'no': '1', 'name': 'kirti', 'course': 'btech'},
-{'no': '1', 'name': 'kirti', 'course': 'btech'},
-{'no': '1', 'name': 'kirti', 'course': 'btech'},
-{'no': '1', 'name': 'kirti', 'course': 'btech'},
-{'name': 'kirti', 'emailid': 'kirti@gmail.com', 'rollno': 2, 'mark': {'maths': 90, 'english': 80}},
-{'name': 'kirti', 'emailid': 'kirti@gmail.com', 'rollno': 2, 'mark': {'maths': 90, 'english': 80}},
-{'name': 'kirti', 'emailid': 'kirti@gmail.coom', 'rollno': 2, 'mark': {'science': 80}},
+[{
+        "name": "r",
+        "emailid": "r",
+        "rollno": 4,
+        "mark": {
+                "r": 34,
+                "we": 34
+        }
+},{
+        "name": "k",
+        "emailid": "k",
+        "rollno": 1,
+        "mark": {
+                "k": 23,
+                "we": 23
+        }
+},{
+        "name": "a",
+        "emailid": "a",
+        "rollno": 2,
+        "mark": {
+                "a": 34,
+                "we": 34
+        }
+}]
