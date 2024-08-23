@@ -7,8 +7,7 @@ Write functions to add records to a file.
 Test and validate file operations.
 '''
 
-
-
+import json
 class Student:
     def __init__(self, name, emailid, rollno, mark):
         self.name = name
@@ -24,30 +23,14 @@ class Student:
             d['rollno'] = rollno
             d['mark'] = mark
             file.write(str(d))
+            file.write(",\n")
 
-            
-
-        b = open("student.txt","r")
-        bb = b.readlines()
-        index = 0
-
-        for x in bb:
-            g = []
-            g = bb[index]+','+"\n"
-            print(g)
-            with open ("student_data.json","a") as file:
-                file.write(g)
-            index+=1
-    
-#        with open ("student_data.json", "r") as file:
-#            a = json.load(file)
-#            a[rollno] = d
-
-#            with open ("student_data.json","r") as getfile:
-#                json.dump(a, getfile)
-
-
-
+        def json_dump():
+            with open ("student.txt","r") as files:
+                json_object = json.dumps(d, indent= 8)
+                with open ("student_data.json","a") as outfile:
+                    outfile.write(json_object) 
+        json_dump()
 
 
 while True:
@@ -63,45 +46,8 @@ while True:
         choice = input("Do you want to add more subjects ? [YES/NO] : ")
         if choice in ["NO","no"]:
             break
-
     Student.add_record(name,emailid, rollno, mark)
+
     Choice = input("Do you want to enter more student records? [YES/NO] : ")
     if Choice in ["NO","no"]:
-            break
-
-
-'''
-def add_data():
-    no = input("enter no ")
-    name = input("enter name ")
-    course = input("enter course ")
-
-#    diction = {
-#        "student no ": no,
-#        "student name ": name,
-#        "student course": course
-#    }
-
-    with open("student.txt", 'w') as file:
-            d = {}
-            d['no'] = no
-            d['name'] = name
-            d['course'] = course
-
-            file.write(str(d))
-
-            
-    b = open("student.txt","r")
-    bb = b.readlines()
-    index = 0
-
-    for x in bb:
-        g = []
-        g = bb[index]+','+"\n"
-        print(g)
-        with open ("student_data.json","a") as file:
-            file.write(g)
-        index+=1
-    
-add_data()
-'''
+        break
