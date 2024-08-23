@@ -1,1 +1,2 @@
-kirti->kirti@gmail.com->123->maths:98,science:45
+{'name': 'kirti', 'emailid': 'kirti@gmail.com', 'rollno': 2, 'mark': {'maths': 90, 'english': 80}}
+{'name': 'kirti', 'emailid': 'kirti@gmail.coom', 'rollno': 2, 'mark': {'science': 80}}
