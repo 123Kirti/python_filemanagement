@@ -7,84 +7,94 @@ Implement input functions to capture data.
 Connect CUI with file handling functions.
 '''
 
+
+import json
+student = []
 class Student:
-    def __init__(self, name, emailid, rollno, marks):
+    def __init__(self, name, emailid, rollno, mark,student):
         self.name = name
         self.emailid = emailid
         self.rollno = rollno
-        self.marks = marks
+        self.mark = mark
+        self.student = student
 
-    def __str__(self):
-        marks_str = ",".join(f"{subject}:{mark}" for subject, mark in self.marks.items())
-        return f"{self.name}->{self.emailid}->{self.rollno}->{marks_str}"
-    
-    @classmethod
-    def from_string(cls, data_str):
-        name, emailid, rollno, marks_str = data_str.strip().split("->")
-        marks = dict(subject_mark.split(":") for subject_mark in marks_str.split(","))
-        return cls(name, emailid, rollno, marks)
-    
-def save_students(students, filename):
-    with open(filename, 'w') as file:
-        for student in students:
-            file.write(str(student)+"\n")
+    def add_record(name, emailid, rollno, mark):
+        with open("student.txt", 'a') as file:
+            d = {}
+            d['name'] = name
+            d['emailid'] = emailid
+            d['rollno'] = rollno
+            d['mark'] = mark
+            file.write(str(d))
+            file.write(",\n")
+            student.append(d)
+'''
+        def json_dump():
+            with open ("student.txt","r") as files:
+                json_object = json.dumps(d, indent= 4)
+                with open ("student_data.json","a") as outfile:
+                    outfile.write(json_object)
+                    outfile.write(",\n")
+        json_dump()
+'''    
+        
+        
+#with open ("student_data.json","a") as outfile:
+#    outfile.write("[")
 
-def load_students(filename):
-    students = []
-    try:
-        with open(filename,'r') as file:
-            for line in file:
-                students.append(Student.from_string(line))
-    except FileNotFoundError:
-        print("File not found. Starting with an empty record.")
-    return students
-    
-
-def add_student():
-    name = input("Name : ")
+while True:
+    name = input("Student name : ")
     emailid = input("Email Id : ")
-    rollno = input ("Roll Number : ")
-    marks = {}
+    rollno = int(input("Roll Number :"))
+    mark = {}
 
     while True:
-        subject = input ("Subject Name (if all done write 'done') : ")
-        if subject.lower() == 'done':
+        subject = input("Enter subject : ")
+        marks = int(input("Enter marks: "))
+        mark[subject] = marks
+        choice = input("Do you want to add more subjects ? [YES/NO] : ")
+        if choice in ["NO","no"]:
             break
-        markss = input(f"Marks for {subject} : ")
-        marks[subject] = markss
-    return Student(name, emailid, rollno, marks)
+    Student.add_record(name,emailid, rollno, mark)
 
-def view_students(students):
-    if not students:
-        print("No student records found.")
-    for student in students:
-        print(f"Name: {student.name}, Email: {student.emailid}, Roll Number: {student.rollno}, Marks: {student.marks}")
+    Choice = input("Do you want to enter more student records? [YES/NO] : ")
+    if Choice in ["NO","no"]:
+        break
 
-def main():
-    students = load_students('student.txt')
-    while True:
-        print("Student Records")
-        print("1. Add Student")
-        print("2. View Student")
-        print("3. Save and Exit")
-        print("4. Exit without saving")
+#with open ("student_data.json","a") as outfile:
+#    outfile.write("]")
 
-        choice = input("Choose an Option: ")
-        if choice == '1':
-            students.append(add_student())
-        elif choice== '2':
-            view_students(students)
-        elif choice == '3':
-            save_students(students,'student.txt')
-            print("Student record saved successfully.")
-            break
-        elif choice == '4':
-            print("Exiing without saving.")
-            break
-        else:
-            print("Invalid choice.Try Again.")
 
-    
-if __name__ == "__main__":
-    main()
 
+
+def view_records(filename):
+    with open (filename, "r") as file:
+        file_data = file.readlines()
+        for text in file_data:
+            print(text)
+
+
+while True:
+    print("Student Records")
+    print("1. Add a Student Record")
+    print("2. View Student Records")
+    print("3. Exit")
+
+    choice = input("Choose an Option: ")
+    if choice == '1':
+        continue
+    elif choice== '2':
+        view_records("student_data.json")
+        print("Viewing all student records.")
+        break
+    elif choice == '3':
+        print("Exiing.")
+        break
+    else:
+        print("Invalid choice.Try Again.")
+
+studentss = str(student)
+stu = json.load(studentss)
+print(json.dump(stu, indent = 4, sort_keys=True))
+#with open ("student_data.json","a") as outfile:
+#    outfile.write(studentss)
