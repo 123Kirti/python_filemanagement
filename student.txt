@@ -1,2 +1,0 @@
-{'name': 'k', 'emailid': 'k', 'rollno': 2, 'mark': {'k': 23}},
-{'name': 'k', 'emailid': 'k', 'rollno': 2, 'mark': {'k': 23}},
