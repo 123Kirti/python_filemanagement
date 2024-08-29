@@ -9,7 +9,6 @@ Connect CUI with file handling functions.
 
 
 import json
-student = []
 class Student:
     def __init__(self, name, emailid, rollno, mark,student):
         self.name = name
@@ -27,21 +26,16 @@ class Student:
             d['mark'] = mark
             file.write(str(d))
             file.write(",\n")
-            student.append(d)
-'''
-        def json_dump():
-            with open ("student.txt","r") as files:
-                json_object = json.dumps(d, indent= 4)
-                with open ("student_data.json","a") as outfile:
-                    outfile.write(json_object)
-                    outfile.write(",\n")
-        json_dump()
-'''    
-        
-        
-#with open ("student_data.json","a") as outfile:
-#    outfile.write("[")
 
+        with open ("student_data.json","a+") as outfile:
+            json.dump(d, outfile, indent=4)
+            outfile.write(",\n")
+   
+        
+        
+with open ("student_data.json","a") as outfile:
+    outfile.write("[")
+student = {}
 while True:
     name = input("Student name : ")
     emailid = input("Email Id : ")
@@ -56,13 +50,17 @@ while True:
         if choice in ["NO","no"]:
             break
     Student.add_record(name,emailid, rollno, mark)
+    student['name'] = name
+    student['emailid']=emailid
+    student['rollno']=rollno
+    student['marks']=mark
 
     Choice = input("Do you want to enter more student records? [YES/NO] : ")
     if Choice in ["NO","no"]:
         break
 
-#with open ("student_data.json","a") as outfile:
-#    outfile.write("]")
+with open ("student_data.json","a") as outfile:
+    outfile.write("]")
 
 
 
@@ -92,9 +90,3 @@ while True:
         break
     else:
         print("Invalid choice.Try Again.")
-
-studentss = str(student)
-stu = json.load(studentss)
-print(json.dump(stu, indent = 4, sort_keys=True))
-#with open ("student_data.json","a") as outfile:
-#    outfile.write(studentss)
