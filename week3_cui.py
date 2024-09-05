@@ -30,11 +30,17 @@ class Student:
         with open ("student_data.json","a+") as outfile:
             json.dump(d, outfile, indent=4)
             outfile.write(",\n")
-   
+
+    def view_records(filename):
+        with open (filename, "r") as file:
+            file_data = file.readlines()
+            for text in file_data:
+                print(text)
         
         
 with open ("student_data.json","a") as outfile:
     outfile.write("[")
+
 student = {}
 while True:
     name = input("Student name : ")
@@ -63,15 +69,6 @@ with open ("student_data.json","a") as outfile:
     outfile.write("]")
 
 
-
-
-def view_records(filename):
-    with open (filename, "r") as file:
-        file_data = file.readlines()
-        for text in file_data:
-            print(text)
-
-
 while True:
     print("Student Records")
     print("1. Add a Student Record")
@@ -82,7 +79,7 @@ while True:
     if choice == '1':
         continue
     elif choice== '2':
-        view_records("student_data.json")
+        Student.view_records("student_data.json")
         print("Viewing all student records.")
         break
     elif choice == '3':
