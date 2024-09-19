@@ -25,17 +25,16 @@ class Student:
             file.write(str(d))
             file.write(",\n")
 
-        def json_dump():
-            with open ("student.txt","r") as files:
-                json_object = json.dumps(d, indent= 4)
-                with open ("student_data.json","a") as outfile:
-                    outfile.write(json_object)
-                    outfile.write(",\n")
-        json_dump()
-        
-        
-with open ("student_data.json","a") as outfile:
-    outfile.write("[")
+        with open("student_data.json", 'r+') as outfile:
+            filedata = outfile.read()
+            if filedata:
+                outfile.seek(0)
+                outfile.truncate()
+                filedata = filedata[:-1] + ',' + json.dumps(d) + ']'
+                outfile.write(filedata)
+            else:
+                outfile.write('[' + json.dumps(d) + ']')
+
 
 while True:
     name = input("Student name : ")
@@ -55,6 +54,3 @@ while True:
     Choice = input("Do you want to enter more student records? [YES/NO] : ")
     if Choice in ["NO","no"]:
         break
-
-with open ("student_data.json","a") as outfile:
-    outfile.write("]")
