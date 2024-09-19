@@ -1,0 +1,10 @@
+[
+    {
+        "name": "kirti sachdeva",
+        "emailid": "ks@gmail.com",
+        "rollno": 12,
+        "mark": {
+            "maths": 97
+        }
+    }
+,{"name": "kirti", "emailid": "ks@gmail.com", "rollno": 1234, "mark": {"maths": 87}}]
