@@ -50,7 +50,7 @@ def main():
         print("Student Records")
         print("1. Add a Student Record")
         print("2. View Student Records")
-        print("5. Exit")
+        print("3. Exit")
 
         choice = input("Choose an Option: ")
         if choice == '1':
