@@ -1,10 +1,10 @@
 [
     {
-        "name": "kirti sachdeva",
-        "emailid": "ks@gmail.com",
-        "rollno": 12,
+        "name": "Kirti Sachdeva",
+        "emailid": "kirtisachdeva@gmail.com",
+        "rollno": 2,
         "mark": {
-            "maths": 97
+            "Computer Science": 89
         }
     }
-,{"name": "kirti", "emailid": "ks@gmail.com", "rollno": 1234, "mark": {"maths": 87}}]
+]
